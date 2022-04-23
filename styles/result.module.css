@@ -32,6 +32,7 @@
   width: 100%;
   max-width: 80px;
   margin-right: 24px;
+  flex-shrink: 0;
 }
 
 .contributors {
