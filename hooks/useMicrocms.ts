@@ -16,7 +16,6 @@ export const useMicrocms: UseMicrocms = () => {
       ) {
         setId(e.data.id);
         setData(e.data.message?.data);
-        console.log(e.data.message?.data);
         microcmsUpdateStyle({
           id: e.data.id,
           message: {
