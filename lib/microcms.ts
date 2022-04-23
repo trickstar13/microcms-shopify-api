@@ -25,7 +25,7 @@ export const microcmsPostData = (data: Data) => {
   window.parent.postMessage(
     {
       ...data,
-      action: 'MICROCMS_POST_DATA',
+      action: 'MICROCMS_POST_DATA'
     },
     url
   );
@@ -35,7 +35,7 @@ export const microcmsUpdateStyle = (style: Style) => {
   window.parent.postMessage(
     {
       ...style,
-      action: 'MICROCMS_UPDATE_STYLE',
+      action: 'MICROCMS_UPDATE_STYLE'
     },
     url
   );

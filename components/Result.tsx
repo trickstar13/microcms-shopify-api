@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import React from 'react';
 import type { Item, Result } from '../types/result';
 import styles from '../styles/result.module.css';
 
@@ -13,7 +14,7 @@ const Index: React.VFC<Props> = ({ result, error, loading, selectData }) => {
   if (loading) {
     return (
       <div className={styles.loading}>
-        <Image src="/images/icon_loading.svg" alt="" width="38" height="38" />
+        <Image src='/images/icon_loading.svg' alt='' width='38' height='38' />
       </div>
     );
   }
@@ -24,7 +25,7 @@ const Index: React.VFC<Props> = ({ result, error, loading, selectData }) => {
       </div>
     );
   }
-  if (result?.Items.length === 0) {
+  if (result?.data.products.length === 0) {
     return (
       <div className={styles.empty}>
         <p>検索結果が見つかりません</p>
@@ -33,28 +34,25 @@ const Index: React.VFC<Props> = ({ result, error, loading, selectData }) => {
   }
   return (
     <ul className={styles.lists}>
-      {result?.Items.map((item: Item) => (
+      {result?.data.products.edges.map((item: any) => (
         <li
-          key={item.ASIN}
+          key={item.node.id}
           className={styles.list}
           onClick={() => selectData(item)}
         >
           <div className={styles.image}>
             <Image
-              src={item.Images.Primary.Large.URL}
-              alt=""
-              width={item.Images.Primary.Large.Width}
-              height={item.Images.Primary.Large.Height}
+              src={item.node.images.edges[0].node.originalSrc}
+              alt=''
+              width={item.node.images.edges[0].node.width}
+              height={item.node.images.edges[0].node.height}
             />
           </div>
           <div>
-            <p>{item.ItemInfo.Title.DisplayValue}</p>
-            <ul className={styles.contributors}>
-              {item.ItemInfo.ByLineInfo.Contributors?.map((contributor, i) => (
-                <li key={i}>
-                  {contributor.Name}（{contributor.Role}）
-                </li>
-              ))}
+            <ul>
+              <li>ID: {item.node.id}</li>
+              <li>{item.node.vendor} / {item.node.title}</li>
+              <li>{item.node.priceRange.minVariantPrice.amount}{item.node.priceRange.minVariantPrice.currencyCode}</li>
             </ul>
           </div>
         </li>

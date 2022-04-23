@@ -29,6 +29,7 @@
 }
 
 .image {
+  width: 100%;
   max-width: 80px;
   margin-right: 24px;
 }

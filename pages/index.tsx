@@ -28,12 +28,12 @@ const Index: NextPage = () => {
           {data ? (
             <div className={styles.selectedImage}>
               <Image
-                src={data.Images.Primary.Large.URL}
-                alt=""
-                width={data.Images.Primary.Large.Width}
-                height={data.Images.Primary.Large.Height}
+                src={data.node.images.edges[0].node.originalSrc}
+                alt=''
+                width={data.node.images.edges[0].node.width}
+                height={data.node.images.edges[0].node.height}
               />
-              <p className={styles.title}>{data.ItemInfo.Title.DisplayValue}</p>
+              <p className={styles.title}>{data.node.title}</p>
             </div>
           ) : (
             <p>選択中のアイテムがありません</p>
@@ -42,7 +42,7 @@ const Index: NextPage = () => {
         <div className={styles.search}>
           <div className={styles.form}>
             <input
-              type="text"
+              type='text'
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={onKeyDown}
               className={styles.input}

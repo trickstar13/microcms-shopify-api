@@ -12,21 +12,21 @@ export const useSearch: UseSearch = (keywords) => {
   const search = useCallback(() => {
     setLoading(true);
     fetch(`/api/search?keywords=${keywords}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setLoading(false);
-        setResult([
-          data.SearchResult || {
-            Items: [],
-            TotalResultCount: 0,
-          },
-          null,
-        ]);
-      })
-      .catch((error) => {
-        setLoading(false);
-        setResult([null, error]);
-      });
+    .then((res) => res.json())
+    .then((data) => {
+      setLoading(false);
+      setResult([
+        data || {
+          Items: [],
+          TotalResultCount: 0
+        },
+        null
+      ]);
+    })
+    .catch((error) => {
+      setLoading(false);
+      setResult([null, error]);
+    });
   }, [keywords]);
 
   return [...result, loading, search];
