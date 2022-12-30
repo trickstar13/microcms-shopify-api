@@ -1,5 +1,9 @@
 # microcms-shopify-api
 
+##
+新しく[microcms-sdk-shopify-api](https://github.com/trickstar13/microcms-sdk-shopify-api)を公開していますので、今後は←をご利用ください。
+機能はこのリポジトリとほぼ同様ですが、[microcms-field-extension-api](https://blog.microcms.io/microcms-field-extension-sdk/)パッケージを利用する形式に変更しています。　　
+
 ## 機能
 
 - Shopify の特定ストアでの商品名検索
